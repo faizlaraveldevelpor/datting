@@ -8,6 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { Colors } from '@/theme/color';
+import { Fonts } from '@/theme/fonts';
 
 const { height } = Dimensions.get('window');
 
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
   },
 
   infoContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
     padding: 16,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
@@ -99,20 +100,23 @@ const styles = StyleSheet.create({
 
   name: {
     fontSize: 28,
-    fontWeight: '700',
-    color: '#000',
+    color: Colors.black,
+    fontFamily:Fonts.medium,
+    
   },
 
   profession: {
     fontSize: 18,
-    color: 'gray',
-    marginTop: 4,
+    color: Colors.primary,
+    marginTop: 1,
+    fontFamily:Fonts.regular
   },
 
   distance: {
     fontSize: 16,
     color: 'gray',
     fontWeight: '500',
+    fontFamily:Fonts.regular
   },
 
   section: {
@@ -121,15 +125,16 @@ const styles = StyleSheet.create({
 
   sectionTitle: {
     fontSize: 18,
-    fontWeight: '600',
     marginBottom: 6,
-    color: '#000',
+    color: Colors.black,
+    fontFamily:Fonts.bold
   },
 
   sectionContent: {
     fontSize: 16,
-    color: '#333',
+    color: Colors.black,
     lineHeight: 22,
+    fontFamily:Fonts.regular
   },
 
   interestsContainer: {
@@ -150,6 +155,6 @@ const styles = StyleSheet.create({
   interestText: {
     color: '#fff',
     fontSize: 14,
-    fontWeight: '500',
+    fontFamily:Fonts.medium
   },
 });

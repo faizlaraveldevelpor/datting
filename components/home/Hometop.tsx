@@ -4,6 +4,8 @@ import { TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Colors } from '@/theme/color';
 import BottomFilterDialog from '@/dialog/Bottomdialog';
+import { Fonts } from '@/theme/fonts';
+
 export default function Hometop() {
     const [open, setOpen] = useState(false);
     
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    
+    height:100,
     paddingVertical: 12,
   },
 
@@ -60,12 +62,14 @@ const styles = StyleSheet.create({
 
   greeting: {
     fontSize: 14,
-    color: '#6B7280', // gray
+    color: Colors.gray, // gray
+    fontFamily:Fonts.medium
   },
 
   name: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#111827',
+    color: Colors.black,
+    fontFamily:Fonts.bold
   },
 })

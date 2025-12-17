@@ -13,6 +13,7 @@ import { AntDesign, FontAwesome, Entypo } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from '@/theme/color';
 import { useRouter } from 'expo-router';
+import { Fonts } from '@/theme/fonts';
 
 const { width, height } = Dimensions.get('window');
 
@@ -29,9 +30,9 @@ const SWIPE_Y_THRESHOLD = height * 0.25;
 const Homebottom: React.FC = () => {
   const router = useRouter();
   const [users, setUsers] = useState(initialUsers);
+  const [animating, setAnimating] = useState(false); // state to manage animation
 
   const position = useRef(new Animated.ValueXY()).current;
-  const isAnimating = useRef(false);
 
   const rotate = position.x.interpolate({
     inputRange: [-width, 0, width],
@@ -47,32 +48,33 @@ const Homebottom: React.FC = () => {
   };
 
   const animateOut = (x: number, y: number) => {
-    if (isAnimating.current) return;
-    if (users.length === 0) return;
+    if (animating || users.length === 0) return;
 
-    isAnimating.current = true;
+    setAnimating(true);
 
     Animated.timing(position, {
       toValue: { x, y },
       duration: 220,
       useNativeDriver: true,
     }).start(() => {
+      // Remove top user safely
       setUsers(prev => prev.slice(1));
 
+      // Reset position & animation state in next frame to avoid flick-back
       requestAnimationFrame(() => {
         position.setValue({ x: 0, y: 0 });
-        isAnimating.current = false;
+        setAnimating(false);
       });
     });
   };
 
   const panResponder = useRef(
     PanResponder.create({
-      onStartShouldSetPanResponder: () => !isAnimating.current,
-      onMoveShouldSetPanResponder: () => !isAnimating.current,
+      onStartShouldSetPanResponder: () => !animating,
+      onMoveShouldSetPanResponder: () => !animating,
 
       onPanResponderMove: (_, gesture) => {
-        if (isAnimating.current) return;
+        if (animating) return;
 
         position.setValue({
           x: gesture.dx,
@@ -81,7 +83,7 @@ const Homebottom: React.FC = () => {
       },
 
       onPanResponderRelease: (_, g) => {
-        if (isAnimating.current) return;
+        if (animating) return;
 
         if (g.dx > SWIPE_X_THRESHOLD) {
           animateOut(width * 1.2, g.dy);
@@ -176,6 +178,7 @@ const Homebottom: React.FC = () => {
         <TouchableOpacity
           style={[styles.iconBtn, styles.reject]}
           onPress={() => animateOut(-width * 1.2, 0)}
+          disabled={animating}
         >
           <AntDesign name="close" size={28} color="#ff4d4f" />
         </TouchableOpacity>
@@ -183,6 +186,7 @@ const Homebottom: React.FC = () => {
         <TouchableOpacity
           style={[styles.iconBtn, styles.superLike]}
           onPress={() => animateOut(0, -height)}
+          disabled={animating}
         >
           <FontAwesome name="star" size={26} color="#1e90ff" />
         </TouchableOpacity>
@@ -190,6 +194,7 @@ const Homebottom: React.FC = () => {
         <TouchableOpacity
           style={[styles.iconBtn, styles.accept]}
           onPress={() => animateOut(width * 1.2, 0)}
+          disabled={animating}
         >
           <AntDesign name="heart" size={28} color="#52c41a" />
         </TouchableOpacity>
@@ -205,7 +210,7 @@ const styles = StyleSheet.create({
   card: {
     position: 'absolute',
     width: '100%',
-    height: '100%',
+    height: height-210,
     borderRadius: 30,
     overflow: 'hidden',
     backgroundColor: '#000',
@@ -213,7 +218,7 @@ const styles = StyleSheet.create({
   image: { width: '100%', height: '100%' },
   actions: {
     position: 'absolute',
-    bottom: -30,
+    bottom: -70,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
@@ -247,9 +252,9 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   row: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  name: { color: '#fff', fontSize: 22, fontWeight: '700' },
-  profession: { color: '#fff', fontSize: 16 },
-  distance: { color: '#fff', fontSize: 16 },
+  name: { color:Colors.white, fontSize: 22, fontFamily: Fonts.medium },
+  profession: { color:Colors.white, fontSize: 16,fontFamily: Fonts.regular },
+  distance: { color:Colors.white, fontSize: 16 ,fontFamily: Fonts.regular},
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  endText: { fontSize: 22, fontWeight: '600' },
+  endText: { fontSize: 22, fontWeight: '600', color:Colors.white },
 });

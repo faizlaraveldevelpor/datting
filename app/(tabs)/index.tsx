@@ -7,11 +7,13 @@ import { ThemedView } from '@/components/themed-view';
 import { Link } from 'expo-router';
 import Hometop from '../../components/home/Hometop';
 import Homebottom from '@/components/home/Homebottom';
+import { Fonts } from '@/theme/fonts';
+import { Colors } from '@/theme/color';
 export default function HomeScreen({navigation}:any) {
   return (
     <View style={styles.homeconatiner}>
       <Hometop />
-      <Homebottom navigation={navigation}/>
+      <Homebottom />
     </View>
   );
 }
@@ -19,5 +21,5 @@ export default function HomeScreen({navigation}:any) {
 const styles = StyleSheet.create({
   homeconatiner: { marginLeft:15,marginRight:15,marginTop:30, paddingBottom:300},
   scrollContent: { padding: 16 },
-  card: { backgroundColor: '#fff', marginBottom: 12, padding: 16, borderRadius: 8 },
+  card: { backgroundColor: Colors.white, marginBottom: 12, padding: 16, borderRadius: 8 },
 });

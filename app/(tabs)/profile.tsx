@@ -11,6 +11,7 @@ import {
 import { Ionicons, MaterialIcons, Entypo } from '@expo/vector-icons';
 import { Colors } from '@/theme/color';
 import { useRouter } from 'expo-router';
+import { Fonts } from '@/theme/fonts';
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -20,12 +21,12 @@ export default function ProfileScreen() {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       
       {/* Logo */}
-      <View style={styles.logoContainer}>
+      {/* <View style={styles.logoContainer}>
         <Image
           source={require("../../assets/images/logo.jpg")}
           style={styles.logo}
         />
-      </View>
+      </View> */}
 
       {/* User Image */}
       <View style={styles.profileImageContainer}>
@@ -115,24 +116,29 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F8F9FB',
+    backgroundColor: Colors.background,
     paddingHorizontal: 20,
   },
 
-  logoContainer: {
-    marginTop: 40,
-    alignItems: 'flex-start',
-  },
+  // logoContainer: {
+  //   marginTop: 40,
+  //   alignItems: 'flex-start',
+  //   borderRadius: 100,
 
-  logo: {
-    width: 80,
-    height: 40,
-    resizeMode: 'contain',
-  },
+  // },
+
+  // logo: {
+  //   width: 80,
+  //   height: 40,
+  //   resizeMode: 'contain',
+  //   borderRadius: 100,
+
+  // },
 
   profileImageContainer: {
     alignItems: 'center',
     marginVertical: 25,
+    marginTop:40
   },
 
   profileImage: {
@@ -157,15 +163,16 @@ vipContent: {
 
 vipTitle: {
   fontSize: 18,
-  fontWeight: '700',
   color: Colors.white,
   marginBottom: 6,
+  fontFamily:Fonts.bold
 },
 
 vipDescription: {
   fontSize: 14,
   color: Colors.white,
   marginBottom: 14,
+  fontFamily:Fonts.regular
 },
 
 vipButton: {
@@ -180,6 +187,8 @@ vipButtonText: {
   color: Colors.primary,
   fontWeight: '600',
   fontSize: 14,
+  fontFamily:Fonts.medium
+
 },
 
 vipImage: {
@@ -190,8 +199,7 @@ vipImage: {
 },
 
   settingsContainer: {
-    backgroundColor: '#fff',
-    borderRadius: 16,
+    backgroundColor: Colors.background,
     paddingHorizontal: 15,
   },
 
@@ -200,8 +208,8 @@ vipImage: {
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    // borderBottomWidth: 1,
+    // borderBottomColor: '#eee',
   },
 
   settingLeft: {
@@ -213,5 +221,6 @@ vipImage: {
   settingText: {
     fontSize: 15,
     color: Colors.black,
+    fontFamily: Fonts.regular,
   },
 });

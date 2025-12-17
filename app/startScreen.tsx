@@ -10,6 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/theme/color';
 // agar expo-router use kar rahe ho
 import { useRouter } from 'expo-router';
+import { Fonts } from '@/theme/fonts';
 
 export default function StartScreen() {
   const router = useRouter();
@@ -72,7 +73,7 @@ export default function StartScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
     paddingHorizontal: 24,
     justifyContent: 'center',
   },
@@ -91,19 +92,21 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 120,
-    height: 120,
-    alignSelf: 'center',
-    marginBottom: 30,
-    resizeMode: 'contain',
-  },
+  width: 120,
+  height: 120,
+  alignSelf: 'center',
+  marginBottom: 30,
+  resizeMode: 'cover', // contain se cover better rounded look deta hai
+  borderRadius: 60, // 🔥 full rounded
+},
+
 
   heading: {
     fontSize: 28,
-    fontWeight: '700',
     textAlign: 'center',
     marginBottom: 30,
-    color: '#111827',
+    color: Colors.black,
+    fontFamily:Fonts.bold
   },
 
   socialButton: {
@@ -116,12 +119,14 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     marginBottom: 15,
     gap: 10,
+    backgroundColor:Colors.white
   },
 
   socialText: {
     fontSize: 15,
     fontWeight: '500',
     color: '#111827',
+    fontFamily:Fonts.regular
   },
 
   divider: {
@@ -154,6 +159,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
     fontSize: 15,
+    fontFamily:Fonts.bold
   },
 
   signupContainer: {
@@ -164,11 +170,13 @@ const styles = StyleSheet.create({
   signupText: {
     color: '#6B7280',
     fontSize: 14,
+    fontFamily:Fonts.regular
   },
 
   signupLink: {
     color: Colors.primary,
     fontWeight: '600',
     fontSize: 14,
+    fontFamily:Fonts.bold
   },
 });

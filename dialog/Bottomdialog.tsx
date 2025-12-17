@@ -14,6 +14,7 @@ import { Picker } from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { Colors } from '@/theme/color';
+import { Fonts } from '@/theme/fonts';
 const { height } = Dimensions.get('window');
 const PRIMARY = '#8A2BE2';
 
@@ -114,10 +115,10 @@ const [ageRange, setAgeRange] = useState<number[]>([20, 40]); // [min, max]
             onValueChange={(itemValue) => setSelectedLocation(itemValue)}
             style={{ height: 50 }}
           >
-            <Picker.Item label="Karachi" value="Karachi" />
-            <Picker.Item label="Lahore" value="Lahore" />
-            <Picker.Item label="Islamabad" value="Islamabad" />
-            <Picker.Item label="Peshawar" value="Peshawar" />
+            <Picker.Item label="Karachi" value="Karachi" style={{fontFamily:Fonts.bold}} />
+            <Picker.Item label="Lahore" value="Lahore" style={{fontFamily:Fonts.bold}} />
+            <Picker.Item label="Islamabad" value="Islamabad" style={{fontFamily:Fonts.bold}} />
+            <Picker.Item label="Peshawar" value="Peshawar" style={{fontFamily:Fonts.bold}} />
           </Picker>
         </View>
 
@@ -137,10 +138,10 @@ const [ageRange, setAgeRange] = useState<number[]>([20, 40]); // [min, max]
         {/* Footer buttons */}
         <View style={styles.footer}>
           <TouchableOpacity style={styles.resetBtn} onPress={onClose}>
-            <Text style={{ color: PRIMARY, fontWeight: '600' }}>Reset</Text>
+            <Text style={{ color: PRIMARY, fontFamily:Fonts.bold  }}>Reset</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.applyBtn} onPress={onClose}>
-            <Text style={{ color: Colors.white, fontWeight: '600' }}>Apply</Text>
+            <Text style={{ color: Colors.white, fontFamily:Fonts.bold  }}>Apply</Text>
           </TouchableOpacity>
         </View>
       </Animated.View>
@@ -173,14 +174,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: '700',
     textAlign: 'center',
     marginBottom: 15,
+    fontFamily:Fonts.bold
   },
   label: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 20,
     marginVertical: 10,
+    fontFamily:Fonts.medium
   },
   row: {
     flexDirection: 'row',
@@ -196,7 +197,10 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
   chipText: {
+    fontSize: 14,
     color: Colors.primary,
+    fontFamily:Fonts.medium
+    
   },
   pickerWrapper: {
     borderWidth: 1,
@@ -204,6 +208,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 15,
     overflow: 'hidden',
+    fontFamily:Fonts.medium
   },
   footer: {
     flexDirection: 'row',
@@ -216,6 +221,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: '45%',
     alignItems: 'center',
+    fontFamily:Fonts.medium
   },
   applyBtn: {
     backgroundColor: Colors.primary,
@@ -223,5 +229,6 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: '45%',
     alignItems: 'center',
+    fontFamily:Fonts.bold
   },
 });

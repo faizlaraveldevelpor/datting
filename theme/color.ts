@@ -2,9 +2,9 @@ export const Colors = {
   primary: '#8000FF',   // Purple-ish
   secondary: '#FF69B4', // Lighter purple / accent
   acent:"#FF4D4D",
-  background: '#F4F6FA',
+  background: '#1E1E1E',
   white: '#F4F6FA',
-  black: '#1E1E1E',
+  black: '#F4F6FA',
   gray: '#A9A9A9',
   ligthgray:"#eee",
   green:"#1BE470",
