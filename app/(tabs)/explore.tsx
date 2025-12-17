@@ -19,7 +19,7 @@ const LocationPage = () => {
 
         <View style={styles.countryContainer}>
           <Text style={styles.countryText}>Selected Country</Text>
-          <TouchableOpacity style={styles.changeButton}>
+          <TouchableOpacity style={styles.changeButton} onPress={()=>router.push("Selectlocation")}>
             <Text style={styles.changeButtonText}>Change</Text>
           </TouchableOpacity>
         </View>

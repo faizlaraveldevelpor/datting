@@ -34,6 +34,7 @@ export default function RootLayout() {
         <Stack.Screen name="userdetail" options={{ headerShown: false }} />
         <Stack.Screen name="startScreen" options={{ headerShown: false }} />
         <Stack.Screen name="Showmore" options={{ headerShown: false }} />
+        <Stack.Screen name="Selectlocation" options={{ headerShown: false }} />
 
       </Stack>
 <StatusBar style="light" hidden={true} />    
